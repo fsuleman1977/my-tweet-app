@@ -67,12 +67,12 @@ steps:
 
 #- script: docker push securethecloud/my_tweet_app:$(build.buildId)
 #  displayName: 'docker push to DockerHub'
-  
-- task: Prisma Cloud IaC Scan@1
+- task: prisma-cloud-compute-scan@1
   inputs:
-    Path: '.'
-    prismaCloudService: 'Test Connection'
-    High: '0'
-    Medium: '0'
-    Low: '0'
-    Operator: 'or'
+    scanType: 'images'
+    twistlockService: 'PC-Console-Scanner'
+    vulnerabilityThreshold: 'high'
+    onlyFixed: false
+    gracePeriod: '10'
+    complianceThreshold: 'high'
+    artifact: 'nginx:latest'
