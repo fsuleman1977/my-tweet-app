@@ -1,4 +1,12 @@
 # Sample Azure DevOps pipeline
+- task: prisma-cloud-compute-scan@1
+  inputs:
+    scanType: 'images'
+    twistlockService: 'PC-Console-Scanner'
+    vulnerabilityThreshold: 'high'
+    onlyFixed: false
+    gracePeriod: '0'
+    complianceThreshold: 'high'
 # Showcasing integration of twistcli scanning
 
 # This sample relies on environment variables for connectivity to Twistlock
